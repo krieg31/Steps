@@ -19,6 +19,7 @@ public class MainActivity extends Activity implements SensorEventListener{
 
     private SensorManager sensorManager;
     private TextView count;
+    private TextView countras;
     boolean activityRunning;
 
     @Override

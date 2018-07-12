@@ -19,7 +19,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:textColor="@android:color/black"
-        android:textSize="40dp" />
+        android:textSize="40sp" />
 
     <TextView
         android:id="@+id/ras"
@@ -32,11 +32,20 @@
 
     <TextView
         android:id="@+id/countras"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:textColor="@android:color/black"
-        android:textSize="40dp" />
+        android:textSize="40sp" />
+
+    <TextView
+        android:id="@+id/ras2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Рост"
+        android:textColor="@android:color/black"
+        android:textSize="40sp" />
 
 </LinearLayout>
