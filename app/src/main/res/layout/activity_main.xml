@@ -40,12 +40,20 @@
         android:textSize="40sp" />
 
     <TextView
-        android:id="@+id/ras2"
+        android:id="@+id/rost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="Рост"
         android:textColor="@android:color/black"
         android:textSize="40sp" />
+
+    <EditText
+        android:id="@+id/rostschet"
+        android:layout_width="94dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:ems="10"
+        android:inputType="numberDecimal" />
 
 </LinearLayout>
