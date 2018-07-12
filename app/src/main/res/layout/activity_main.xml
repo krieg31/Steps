@@ -2,21 +2,41 @@
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center" >
+     >
 
     <TextView
-        android:textColor="@android:color/black"
         android:layout_width="wrap_content"
-        android:text="Steps"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Шаги"
+        android:textColor="@android:color/black"
+        android:textSize="40sp" />
 
     <TextView
         android:id="@+id/count"
-        android:textSize="40dp"
-        android:textColor="@android:color/black"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_marginTop="10dp"
-        />
+        android:textColor="@android:color/black"
+        android:textSize="40dp" />
+
+    <TextView
+        android:id="@+id/ras"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Расстояние"
+        android:textColor="@android:color/black"
+        android:textSize="40sp" />
+
+    <TextView
+        android:id="@+id/countras"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:textColor="@android:color/black"
+        android:textSize="40dp" />
 
 </LinearLayout>
