@@ -38,15 +38,12 @@ public class MainActivity extends Activity implements SensorEventListener{
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
-<<<<<<< HEAD
         Date date = new Date();
         SimpleDateFormat formatForDateNow = new SimpleDateFormat("E yyyy.MM.dd 'и время' hh:mm:ss a zzz");
-=======
 
         mSettings = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
         rostschet = (EditText) findViewById(R.id.rostschet);
         tvInfo = (TextView)findViewById(R.id.tvInfo);
->>>>>>> 40298454f8a135a689140c23ba9d899eabea370d
         count = (TextView) findViewById(R.id.count);
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         TextView timenow = (TextView) findViewById(R.id.timenow);
@@ -65,8 +62,6 @@ public class MainActivity extends Activity implements SensorEventListener{
         } else {
             Toast.makeText(this, "Count sensor not available!", Toast.LENGTH_LONG).show();
         }
-<<<<<<< HEAD
-=======
         if (mSettings.contains(APP_PREFERENCES_ROST)) {
             tvInfo.setText(mSettings.getString(APP_PREFERENCES_ROST, ""));
            // countras.setText(mSettings.getString(APP_PREFERENCES_RAS,""));
@@ -104,7 +99,6 @@ public class MainActivity extends Activity implements SensorEventListener{
         a=((a/400)+0.37)*c;
         String b=String.format("%2f",a);
         APP_PREFERENCES_RAS=b;
->>>>>>> 40298454f8a135a689140c23ba9d899eabea370d
     }
     @Override
     protected void onPause() {
@@ -112,6 +106,7 @@ public class MainActivity extends Activity implements SensorEventListener{
         activityRunning = false;
     }
     @Override
+    protected void onStop(){
         super.onStop();
         activityRunning=false;
     }

@@ -55,7 +55,6 @@
         android:layout_gravity="center"
         android:ems="10"
         android:inputType="numberDecimal" />
-<<<<<<< HEAD
 
     <TextView
         android:id="@+id/time"
@@ -73,7 +72,6 @@
         android:layout_gravity="center"
         android:textSize="24sp" />
 
-=======
     <Button
         android:id="@+id/buttonSave"
         android:layout_width="fill_parent"
@@ -86,5 +84,4 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="" />
->>>>>>> 40298454f8a135a689140c23ba9d899eabea370d
 </LinearLayout>
