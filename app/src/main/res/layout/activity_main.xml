@@ -55,5 +55,16 @@
         android:layout_gravity="center"
         android:ems="10"
         android:inputType="numberDecimal" />
-
+    <Button
+        android:id="@+id/buttonSave"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClick"
+        android:text="Сохранить" />
+    <TextView
+        android:id="@+id/tvInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="" />
 </LinearLayout>
