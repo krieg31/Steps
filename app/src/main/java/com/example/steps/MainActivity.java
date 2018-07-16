@@ -8,9 +8,8 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.os.CountDownTimer;
+import android.os.Handler;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -33,6 +32,8 @@ public class MainActivity extends Activity implements SensorEventListener{
     private TextView countras;
     private EditText rostschet;
     private boolean activityRunning;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,13 +43,24 @@ public class MainActivity extends Activity implements SensorEventListener{
         SimpleDateFormat formatForDateNow = new SimpleDateFormat("E yyyy.MM.dd 'и время' hh:mm:ss a zzz");
 
         mSettings = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
-        rostschet = (EditText) findViewById(R.id.rostschet);
-        tvInfo = (TextView)findViewById(R.id.tvInfo);
-        count = (TextView) findViewById(R.id.count);
+        rostschet = findViewById(R.id.rostschet);
+        tvInfo = findViewById(R.id.tvInfo);
+        count = findViewById(R.id.count);
+        countras = findViewById(R.id.countras);
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-        TextView timenow = (TextView) findViewById(R.id.timenow);
+        TextView timenow = findViewById(R.id.timenow);
         timenow.setText("Текущая дата " + formatForDateNow.format(date));
 
+        final Handler handler = new Handler();
+        if (mSettings.contains(APP_PREFERENCES_ROST)) {
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    rasstoyanie2();
+                    handler.postDelayed(this, 200);
+                }
+            }, 1000);
+        }
     }
 
     @Override
@@ -63,42 +75,10 @@ public class MainActivity extends Activity implements SensorEventListener{
             Toast.makeText(this, "Count sensor not available!", Toast.LENGTH_LONG).show();
         }
         if (mSettings.contains(APP_PREFERENCES_ROST)) {
-            tvInfo.setText(mSettings.getString(APP_PREFERENCES_ROST, ""));
-           // countras.setText(mSettings.getString(APP_PREFERENCES_RAS,""));
-           // rasstoyanie(countras);
+            rostschet.setText(mSettings.getString(APP_PREFERENCES_ROST, ""));
         }
 
 
-    }
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.buttonSave:
-                String strNickName = rostschet.getText().toString();
-                SharedPreferences.Editor editor = mSettings.edit();
-                editor.putString(APP_PREFERENCES_ROST, strNickName);
-                editor.apply();
-                if (mSettings.contains(APP_PREFERENCES_ROST)) {
-                    tvInfo.setText(mSettings.getString(APP_PREFERENCES_ROST, ""));
-                //    countras.setText(mSettings.getString(APP_PREFERENCES_RAS,""));
-                    //rasstoyanie(countras);
-                }
-                break;
-        }
-    }
-  //  public class MyThread extends Thread {
-    //    public void run() {
-     //       rasstoyanie();
-       // }
-    //}
-    public void rasstoyanie(TextView qwerty){
-        double a;
-        String s1=APP_PREFERENCES_ROST;
-        double c;
-        c= Double.parseDouble(count.getText().toString());
-        a= Double.parseDouble(s1);
-        a=((a/400)+0.37)*c;
-        String b=String.format("%2f",a);
-        APP_PREFERENCES_RAS=b;
     }
     @Override
     protected void onPause() {
@@ -126,4 +106,44 @@ public class MainActivity extends Activity implements SensorEventListener{
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
     }
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.buttonSave:
+                String strNickName = rostschet.getText().toString();
+                SharedPreferences.Editor editor = mSettings.edit();
+                editor.putString(APP_PREFERENCES_ROST, strNickName);
+                editor.apply();
+                if (mSettings.contains(APP_PREFERENCES_ROST)) {
+                    tvInfo.setText(mSettings.getString(APP_PREFERENCES_ROST, ""));
+                }
+                break;
+        }
+    }
+    public void rasstoyanie(){
+        double a;
+        String s1=rostschet.getText().toString();
+        double c;
+        String s2=count.getText().toString();
+        SharedPreferences.Editor editor=mSettings.edit();
+        a= Double.parseDouble(s1);
+        c= Double.parseDouble(s2);
+        a=((a/400)+0.37)*c;
+        editor.putString(APP_PREFERENCES_RAS,Double.toString(a));
+        editor.apply();
+        countras.setText(mSettings.getString(APP_PREFERENCES_RAS,""));
+    }
+    public void rasstoyanie2(){
+        double a;
+        String s1=APP_PREFERENCES_ROST;
+        double c;
+        String s2=count.getText().toString();
+        SharedPreferences.Editor editor=mSettings.edit();
+        a= Double.parseDouble(s1);
+        c= Double.parseDouble(s2);
+        a=((a/400)+0.37)*c;
+        editor.putString(APP_PREFERENCES_RAS,Double.toString(a));
+        editor.apply();
+        countras.setText(mSettings.getString(APP_PREFERENCES_RAS,""));
+    }
+
 }
