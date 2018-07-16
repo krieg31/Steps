@@ -53,7 +53,11 @@ public class MainActivity extends Activity implements SensorEventListener{
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         TextView timenow = findViewById(R.id.timenow);
         timenow.setText("Текущее время " + formatForDateNow.format(date));
+<<<<<<< HEAD
 
+=======
+        final Handler handler = new Handler();
+>>>>>>> e1b4fc13eeea10f88b3349427d334243a15f690c
         if (mSettings.contains(APP_PREFERENCES_ROST)) {
             rostschet.setText(mSettings.getString(APP_PREFERENCES_ROST, ""));
         }
