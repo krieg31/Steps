@@ -125,7 +125,7 @@ public class MainActivity extends Activity implements SensorEventListener{
     @Override
     public void onSensorChanged(SensorEvent event) {
         if(activityRunning) {
-            count.setText(String.valueOf(event.values[0]));
+            count.setText(String.valueOf(Math.round(event.values[0])));
         }
     }
     @Override
