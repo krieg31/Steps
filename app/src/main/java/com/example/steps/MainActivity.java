@@ -39,7 +39,7 @@ public class MainActivity extends Activity implements SensorEventListener{
 
         setContentView(R.layout.activity_main);
         Date date = new Date();
-        SimpleDateFormat formatForDateNow = new SimpleDateFormat("E yyyy.MM.dd 'и время' hh:mm:ss a zzz");
+        SimpleDateFormat formatForDateNow = new SimpleDateFormat("hh:mm:ss");
 
         mSettings = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
         rostschet = (EditText) findViewById(R.id.rostschet);
@@ -47,7 +47,7 @@ public class MainActivity extends Activity implements SensorEventListener{
         count = (TextView) findViewById(R.id.count);
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         TextView timenow = (TextView) findViewById(R.id.timenow);
-        timenow.setText("Текущая дата " + formatForDateNow.format(date));
+        timenow.setText("Текущее время " + formatForDateNow.format(date));
 
     }
 
@@ -79,7 +79,7 @@ public class MainActivity extends Activity implements SensorEventListener{
                 editor.apply();
                 if (mSettings.contains(APP_PREFERENCES_ROST)) {
                     tvInfo.setText(mSettings.getString(APP_PREFERENCES_ROST, ""));
-                //    countras.setText(mSettings.getString(APP_PREFERENCES_RAS,""));
+                    countras.setText(mSettings.getString(APP_PREFERENCES_RAS,""));
                     //rasstoyanie(countras);
                 }
                 break;
@@ -90,7 +90,7 @@ public class MainActivity extends Activity implements SensorEventListener{
      //       rasstoyanie();
        // }
     //}
-    public void rasstoyanie(TextView qwerty){
+    public void rasstoyanie(TextView qwer){
         double a;
         String s1=APP_PREFERENCES_ROST;
         double c;
