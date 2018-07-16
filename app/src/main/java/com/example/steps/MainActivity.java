@@ -40,7 +40,7 @@ public class MainActivity extends Activity implements SensorEventListener{
 
         setContentView(R.layout.activity_main);
         Date date = new Date();
-        SimpleDateFormat formatForDateNow = new SimpleDateFormat("E yyyy.MM.dd 'и время' hh:mm:ss a zzz");
+        SimpleDateFormat formatForDateNow = new SimpleDateFormat("hh:mm:ss");
 
         mSettings = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
         rostschet = findViewById(R.id.rostschet);
@@ -49,7 +49,7 @@ public class MainActivity extends Activity implements SensorEventListener{
         countras = findViewById(R.id.countras);
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         TextView timenow = findViewById(R.id.timenow);
-        timenow.setText("Текущая дата " + formatForDateNow.format(date));
+        timenow.setText("Текущее время " + formatForDateNow.format(date));
 
         final Handler handler = new Handler();
         if (mSettings.contains(APP_PREFERENCES_ROST)) {
@@ -77,8 +77,17 @@ public class MainActivity extends Activity implements SensorEventListener{
         if (mSettings.contains(APP_PREFERENCES_ROST)) {
             rostschet.setText(mSettings.getString(APP_PREFERENCES_ROST, ""));
         }
+    }
 
-
+    public void rasstoyanie(TextView qwer){
+        double a;
+        String s1=APP_PREFERENCES_ROST;
+        double c;
+        c= Double.parseDouble(count.getText().toString());
+        a= Double.parseDouble(s1);
+        a=((a/400)+0.37)*c;
+        String b=String.format("%2f",a);
+        APP_PREFERENCES_RAS=b;
     }
     @Override
     protected void onPause() {
@@ -114,7 +123,7 @@ public class MainActivity extends Activity implements SensorEventListener{
                 editor.putString(APP_PREFERENCES_ROST, strNickName);
                 editor.apply();
                 if (mSettings.contains(APP_PREFERENCES_ROST)) {
-                    tvInfo.setText(mSettings.getString(APP_PREFERENCES_ROST, ""));
+                    rostschet.setText(mSettings.getString(APP_PREFERENCES_ROST, ""));
                 }
                 break;
         }
