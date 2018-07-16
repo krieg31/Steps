@@ -48,7 +48,6 @@ public class MainActivity extends Activity implements SensorEventListener{
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         TextView timenow = (TextView) findViewById(R.id.timenow);
         timenow.setText("Текущее время " + formatForDateNow.format(date));
-
     }
 
     @Override
