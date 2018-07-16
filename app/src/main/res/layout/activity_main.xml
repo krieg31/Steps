@@ -78,10 +78,11 @@
         android:layout_height="wrap_content"
         android:onClick="onClick"
         android:text="Сохранить" />
-    <TextView
-        android:id="@+id/tvInfo"
+
+    <Button
+        android:id="@+id/refresh"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="" />
+        android:onClick="onClick"
+        android:text="Обновить" />
 </LinearLayout>
