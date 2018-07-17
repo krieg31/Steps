@@ -4,6 +4,13 @@
     android:orientation="vertical"
      >
 
+    <Button
+        android:id="@+id/settings_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onClick"
+        android:text="Настройки" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -55,15 +62,6 @@
         android:layout_gravity="center"
         android:ems="10"
         android:inputType="numberDecimal" />
-
-    <TextView
-        android:id="@+id/time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Дата"
-        android:textColor="@android:color/background_dark"
-        android:textSize="36sp" />
 
     <TextView
         android:id="@+id/timenow"

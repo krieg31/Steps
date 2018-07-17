@@ -15,6 +15,7 @@ import android.os.Handler;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -156,6 +157,9 @@ public class MainActivity extends Activity implements SensorEventListener{
             case R.id.refresh:
                 refresh();
                 break;
+            case R.id.settings_button:
+                Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+                startActivity(intent);
         }
     }
     public void rasstoyanie(){
@@ -174,5 +178,4 @@ public class MainActivity extends Activity implements SensorEventListener{
     public void refresh(){
         onRestart();
     }
-
 }
