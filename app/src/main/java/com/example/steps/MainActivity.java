@@ -126,7 +126,7 @@ public class MainActivity extends Activity implements SensorEventListener{
     @Override
     public void onSensorChanged(SensorEvent event) {
         if(activityRunning) {
-            count.setText(String.valueOf(event.values[0]));
+            count.setText(String.valueOf(Math.round(event.values[0])));
         }
     }
     @Override
@@ -171,7 +171,8 @@ public class MainActivity extends Activity implements SensorEventListener{
         a= Double.parseDouble(s1);
         c= Double.parseDouble(s2);
         a=((a/400)+0.37)*c;
-        editor.putString(APP_PREFERENCES_RAS,Double.toString(a));
+        int d=(int)Math.round(a);
+        editor.putString(APP_PREFERENCES_RAS,Integer.toString(d));
         editor.apply();
         countras.setText(mSettings.getString(APP_PREFERENCES_RAS,""));
     }
