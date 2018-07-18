@@ -30,4 +30,5 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation files('libs/library-1.1.0-javadoc.jar')
     implementation files('libs/library-1.1.0-sources.jar')
+    implementation 'com.google.android.gms:play-services-maps:15.0.1'
 }
