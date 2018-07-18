@@ -50,7 +50,7 @@
     <TextView
         android:id="@+id/countras"
         android:layout_width="wrap_content"
-        android:layout_height="30dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/ras"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
@@ -88,20 +88,12 @@
         android:onClick="onClick"
         android:text="Сохранить" />
 
-    <Button
-        android:id="@+id/refresh"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/buttonSave"
-        android:onClick="onClick"
-        android:text="Обновить" />
 
     <TextView
         android:id="@+id/timenow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/refresh"
+        android:layout_below="@+id/buttonSave"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
         android:textSize="24sp" />
@@ -115,4 +107,11 @@
         app:itemIconTint="@android:color/white"
         app:itemTextColor="@android:color/white"
         app:menu="@menu/bottom_menu" />
+
+    <FrameLayout
+        android:id="@+id/frgmCont"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"></FrameLayout>
 </RelativeLayout>

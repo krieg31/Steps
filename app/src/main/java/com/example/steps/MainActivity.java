@@ -13,6 +13,9 @@ import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.FragmentActivity;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.view.View;
@@ -22,15 +25,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 import java.util.Date;
 import java.text.*;
+import java.util.Objects;
 
 import android.view.MenuItem;
 import android.support.annotation.NonNull;
 
 import com.example.steps.R;
+import com.example.steps.fragments.betafr;
+import com.example.steps.fragments.betafr2;
 
 
-
-public class MainActivity extends Activity implements SensorEventListener{
+public class MainActivity extends FragmentActivity implements SensorEventListener{
     public static final String APP_PREFERENCES = "mysettings";
     public static final String APP_PREFERENCES_ROST = "Rost";
     public static String APP_PREFERENCES_RAS="RAS";
@@ -41,6 +46,10 @@ public class MainActivity extends Activity implements SensorEventListener{
     private TextView countras;
     private EditText rostschet;
     private boolean activityRunning;
+
+    betafr frb = new betafr();
+    betafr2 frb2= new betafr2();
+    FragmentTransaction ftrans = getSupportFragmentManager().beginTransaction();
 
 
     @Override
@@ -57,11 +66,9 @@ public class MainActivity extends Activity implements SensorEventListener{
         count = findViewById(R.id.count);
         countras = findViewById(R.id.countras);
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         TextView timenow = findViewById(R.id.timenow);
         timenow.setText("Текущее время " + formatForDateNow.format(date));
-
-
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -69,26 +76,18 @@ public class MainActivity extends Activity implements SensorEventListener{
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                         switch (item.getItemId()) {
                             case R.id.beta1:
-                                /*
-                                textFavorites.setVisibility(View.VISIBLE);
-                                textSchedules.setVisibility(View.GONE);
-                                textMusic.setVisibility(View.GONE);
+                                getSupportFragmentManager().beginTransaction().replace(R.id.frgmCont, frb).commit();
                                 break;
-                                */
                             case R.id.beta2:
-                                /*
-                                textFavorites.setVisibility(View.GONE);
-                                textSchedules.setVisibility(View.VISIBLE);
-                                textMusic.setVisibility(View.GONE);
+                                getSupportFragmentManager().beginTransaction().replace(R.id.frgmCont, frb2).commit();
                                 break;
-                                */
                             case R.id.beta3:
-                                /*
-                                textFavorites.setVisibility(View.GONE);
-                                textSchedules.setVisibility(View.GONE);
-                                textMusic.setVisibility(View.VISIBLE);
-                                break;
-                                */
+                                if(getSupportFragmentManager().findFragmentById(R.id.frgmCont) != null) {
+                                    getSupportFragmentManager().beginTransaction().remove(Objects.requireNonNull(getSupportFragmentManager().findFragmentById(R.id.frgmCont)))
+                                            .commit();
+                                    break;
+                                }
+
                         }
                         return false;
                     }
