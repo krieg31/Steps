@@ -76,6 +76,7 @@
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
         android:ems="10"
+        android:hint="Введите рост"
         android:inputType="numberDecimal" />
 
     <Button
