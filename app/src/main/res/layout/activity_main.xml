@@ -5,15 +5,6 @@
     android:orientation="vertical"
      >
 
-    <Button
-        android:id="@+id/settings_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:onClick="onClick"
-        android:text="Настройки" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

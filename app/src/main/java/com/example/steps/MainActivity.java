@@ -193,9 +193,6 @@ public class MainActivity extends FragmentActivity implements SensorEventListene
             case R.id.refresh:
                 refresh();
                 break;
-            case R.id.settings_button:
-                Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
-                startActivity(intent);
         }
     }
     public void rasstoyanie(){
