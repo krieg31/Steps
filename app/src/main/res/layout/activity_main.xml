@@ -1,5 +1,6 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent"
     android:orientation="vertical"
      >
@@ -8,12 +9,16 @@
         android:id="@+id/settings_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:onClick="onClick"
         android:text="Настройки" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/settings_button"
+        android:layout_centerHorizontal="true"
         android:layout_gravity="center"
         android:text="Шаги"
         android:textColor="@android:color/black"
@@ -23,8 +28,10 @@
         android:id="@+id/count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
         android:layout_gravity="center"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="114dp"
         android:textColor="@android:color/black"
         android:textSize="40sp" />
 
@@ -32,7 +39,10 @@
         android:id="@+id/ras"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
         android:layout_gravity="center"
+        android:layout_marginTop="175dp"
         android:text="Расстояние"
         android:textColor="@android:color/black"
         android:textSize="40sp" />
@@ -40,9 +50,10 @@
     <TextView
         android:id="@+id/countras"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
+        android:layout_below="@+id/ras"
+        android:layout_centerHorizontal="true"
         android:layout_gravity="center"
-        android:layout_marginTop="10dp"
         android:textColor="@android:color/black"
         android:textSize="40sp" />
 
@@ -50,6 +61,8 @@
         android:id="@+id/rost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/countras"
+        android:layout_centerHorizontal="true"
         android:layout_gravity="center"
         android:text="Рост"
         android:textColor="@android:color/black"
@@ -57,23 +70,20 @@
 
     <EditText
         android:id="@+id/rostschet"
-        android:layout_width="94dp"
+        android:layout_width="86dp"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/rost"
+        android:layout_centerHorizontal="true"
         android:layout_gravity="center"
         android:ems="10"
         android:inputType="numberDecimal" />
-
-    <TextView
-        android:id="@+id/timenow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textSize="24sp" />
 
     <Button
         android:id="@+id/buttonSave"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/rostschet"
         android:onClick="onClick"
         android:text="Сохранить" />
 
@@ -81,6 +91,27 @@
         android:id="@+id/refresh"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/buttonSave"
         android:onClick="onClick"
         android:text="Обновить" />
-</LinearLayout>
+
+    <TextView
+        android:id="@+id/timenow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/refresh"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:textSize="24sp" />
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:itemBackground="@color/colorPrimary"
+        app:itemIconTint="@android:color/white"
+        app:itemTextColor="@android:color/white"
+        app:menu="@menu/bottom_menu" />
+</RelativeLayout>

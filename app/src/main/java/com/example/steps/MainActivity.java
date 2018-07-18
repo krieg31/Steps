@@ -12,6 +12,7 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.design.widget.BottomNavigationView;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.view.View;
@@ -21,6 +22,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 import java.util.Date;
 import java.text.*;
+
+import android.view.MenuItem;
+import android.support.annotation.NonNull;
+
 import com.example.steps.R;
 
 
@@ -46,6 +51,7 @@ public class MainActivity extends Activity implements SensorEventListener{
         Date date = new Date();
         SimpleDateFormat formatForDateNow = new SimpleDateFormat("hh:mm:ss");
 
+
         mSettings = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
         rostschet = findViewById(R.id.rostschet);
         count = findViewById(R.id.count);
@@ -53,6 +59,42 @@ public class MainActivity extends Activity implements SensorEventListener{
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         TextView timenow = findViewById(R.id.timenow);
         timenow.setText("Текущее время " + formatForDateNow.format(date));
+
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(
+                new BottomNavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.beta1:
+                                /*
+                                textFavorites.setVisibility(View.VISIBLE);
+                                textSchedules.setVisibility(View.GONE);
+                                textMusic.setVisibility(View.GONE);
+                                break;
+                                */
+                            case R.id.beta2:
+                                /*
+                                textFavorites.setVisibility(View.GONE);
+                                textSchedules.setVisibility(View.VISIBLE);
+                                textMusic.setVisibility(View.GONE);
+                                break;
+                                */
+                            case R.id.beta3:
+                                /*
+                                textFavorites.setVisibility(View.GONE);
+                                textSchedules.setVisibility(View.GONE);
+                                textMusic.setVisibility(View.VISIBLE);
+                                break;
+                                */
+                        }
+                        return false;
+                    }
+                });
+
+
         final Handler handler = new Handler();
         if (mSettings.contains(APP_PREFERENCES_ROST)) {
             rostschet.setText(mSettings.getString(APP_PREFERENCES_ROST, ""));
