@@ -57,9 +57,6 @@ public class MainActivity extends FragmentActivity implements SensorEventListene
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
-        Date date = new Date();
-        SimpleDateFormat formatForDateNow = new SimpleDateFormat("hh:mm:ss");
-
 
         mSettings = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
         rostschet = findViewById(R.id.rostschet);
@@ -67,8 +64,6 @@ public class MainActivity extends FragmentActivity implements SensorEventListene
         countras = findViewById(R.id.countras);
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-        TextView timenow = findViewById(R.id.timenow);
-        timenow.setText("Текущее время " + formatForDateNow.format(date));
 
         bottomNavigationView.setOnNavigationItemSelectedListener(
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
